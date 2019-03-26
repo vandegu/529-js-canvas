@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas Example</title>
+	<style type="text/css">
+	/* ALWAYS PUT A BORDER ON A CANVAS ELEMENT */
+		canvas{
+			border: 1px solid black;
+		}
+	</style>
+
+
+</head>
+<body>
+	<!-- YOU NEED TO DESIGN THE CANVAS WITH HTML H/W... -->
+	<canvas id="canvas" width="500" height="500">
+  An alternative text describing what your canvas displays.
+</canvas>
+
+<script type="text/javascript">
+  var canvas = document.querySelector('#canvas');
+  var ctx = canvas.getContext("2d");
+  // Default settings for pen...
+  var rad = 20;
+  var color = 'red';
+
+  // Much thanks to the contributors on StackOverflow for the below idea...
+  // Note: I beleive if anything is drawn on the canvas, it will be removed upon calling
+  // the function resizeCanvas. Maybe only call it on load? (Instead of on 'resize')
+  // https://stackoverflow.com/questions/4288253/html5-canvas-100-width-height-of-viewport
+  function resizeCanvas() {
+    canvas.width = 0.8*window.innerWidth;
+    canvas.height = 0.8*window.innerHeight;
+    console.log('resizeCanvas: ',canvas.width,canvas.height)
+  }
+
+  function draw_circ (x,y,r,c) {
+		ctx.beginPath();
+		ctx.arc(x,y,r,0,2*Math.PI);
+		ctx.fillStyle = c;
+		ctx.fill();
+	}
+
+  window.addEventListener('load',resizeCanvas,false);
+
+  window.addEventListener('mousemove', function (e) {
+	//console.log('X, Y: ',e.pageX,e.pageY);
+	draw_circ(e.pageX,e.pageY,rad,color);
+	})
+
+  window.addEventListener('touchmove', function (e) {
+	console.log('X, Y: ',e.pageX,e.pageY);
+	draw_circ(e.pageX,e.pageY,rad,color);
+	})
+
+
+  window.addEventListener('keyup', function (e) {
+		console.log('keyUp: ',e.keyCode);
+    if (e.keyCode==32) {
+      resizeCanvas();
+      console.log('RELOAD');
+    } else if (e.keyCode==66) {
+      // Reassignment doesn't work if you use the var thing...
+      color = 'blue';
+      console.log('BLUE');
+    } else if (e.keyCode==89) {
+      // Reassignment doesn't work if you use the var thing...
+      color = 'yellow';
+      console.log('YELLOW');
+    } else if (e.keyCode==71) {
+      // Reassignment doesn't work if you use the var thing...
+      color = 'green';
+      console.log('GREEN');
+    } else if (e.keyCode==82) {
+      // Reassignment doesn't work if you use the var thing...
+      color = 'red';
+      console.log('RED');
+    } else if (e.keyCode==38) {
+      // Reassignment doesn't work if you use the var thing...
+      rad += 2;
+      console.log('INC');
+    } else if (e.keyCode==40) {
+      // Reassignment doesn't work if you use the var thing...
+      rad -= 2;
+      if (rad < 1) {
+        rad = 1;
+      }
+      console.log('BLUE');
+    }
+
+	})
+
+</script>
+</body>
