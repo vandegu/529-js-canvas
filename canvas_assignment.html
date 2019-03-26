@@ -54,6 +54,7 @@
 	draw_circ(e.pageX,e.pageY,rad,color);
 	})
 
+	window.addEventListener('orientationchange',resizeCanvas,false)
 
   window.addEventListener('keyup', function (e) {
 		console.log('keyUp: ',e.keyCode);
