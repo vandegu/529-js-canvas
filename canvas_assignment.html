@@ -15,12 +15,15 @@
 <body>
 	<!-- YOU NEED TO DESIGN THE CANVAS WITH HTML H/W... -->
 	<canvas id="canvas" width="500" height="500">
-  An alternative text describing what your canvas displays.
-</canvas>
+  This is a canvas that you can draw on! Space or turn mobile device to clear.
+	</canvas>
+
+<p>Select a color: <input type="color" id="cp" name="favcolor" value="#ff0000"></p>
 
 <script type="text/javascript">
   var canvas = document.querySelector('#canvas');
   var ctx = canvas.getContext("2d");
+	var colorPicker = document.querySelector('#cp');
   // Default settings for pen...
   var rad = 20;
   var color = 'red';
@@ -89,7 +92,11 @@
       }
       console.log('BLUE');
     }
+	})
 
+	colorPicker.addEventListener("input", function (e) {
+		console.log('Changing color to: ',e.target.value);
+		color = e.target.value;
 	})
 
 </script>
