@@ -20,6 +20,18 @@
 
 <p>Select a color: <input type="color" id="cp" name="favcolor" value="#ff0000"></p>
 
+<p>Instructions:
+	<ul>
+		<li>{up arrow}: Increase size</li>
+		<li>{down arrow}: Decrease size</li>
+		<li>b: Change color to blue</li>
+		<li>y: Change color to yellow</li>
+		<li>g: Change color to green</li>
+		<li>r: Change color to red</li>
+		<li>{space} or rotate device: Clear canvas</li>
+	</ul>
+</p>
+
 <script type="text/javascript">
   var canvas = document.querySelector('#canvas');
   var ctx = canvas.getContext("2d");
@@ -90,7 +102,7 @@
       if (rad < 1) {
         rad = 1;
       }
-      console.log('BLUE');
+      console.log('DEC');
     }
 	})
 
